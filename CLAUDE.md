@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Margin is a Fabric mod (mod id `margin`) for Minecraft 1.21.1. Options are read at startup from `config/margin.json` (`MarginConfig`, loaded from the main entrypoint) and can be changed in-game through an optional Mod Menu / Cloth Config screen. Those two are compile-only dependencies: Cloth classes must stay confined to `MarginConfigScreen` so the mod still loads without them.
 
-The design for the mod is in `Margin.md`: coordinates and the current biome drawn on held maps (client), and empty maps zoomable at a cartography table (mostly server). Read it before implementing features, and treat its "Open questions" section as undecided.
+`README.md` describes the features and options; keep it current when they change.
 
 ## Commands
 
@@ -42,5 +42,7 @@ Each side has its own entrypoint, registered in `src/main/resources/fabric.mod.j
 Both configs set `injectors.defaultRequire: 1`, so an injector that matches no target fails at runtime rather than being silently skipped. `build` does not catch this; a mixin change needs `runClient` or `runServer` to verify.
 
 **Mappings.** The project uses official Mojang mappings (`loom.officialMojangMappings()`), so vanilla names are Mojang's (`ResourceLocation`, `Minecraft`), not Yarn's (`Identifier`, `MinecraftClient`). Fabric docs and examples written against Yarn need translating.
+
+**Empty map zoom level.** It is stored in vanilla's `custom_data` component (`EmptyMapScale`) rather than a custom component or item, so clients without the mod can still receive these items.
 
 **Helpers.** Use `Margin.id(path)` for namespaced `ResourceLocation`s, and `Margin.LOGGER` for logging.
