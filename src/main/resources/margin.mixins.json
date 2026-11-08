@@ -3,6 +3,8 @@
 	"package": "maihatsuu.margin.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
+		"CartographyTableMapSlotMixin",
+		"CartographyTableMenuMixin",
 		"EmptyMapItemMixin"
 	],
 	"injectors": {

@@ -1,0 +1,8 @@
+{
+  "config.margin.title": "Margin",
+  "config.margin.category.general": "General",
+  "config.margin.showCoordinates": "Show coordinates",
+  "config.margin.showCoordinates.tooltip": "Write your coordinates along the bottom edge of held maps.",
+  "config.margin.showY": "Show Y",
+  "config.margin.showY.tooltip": "Include the Y coordinate as well as X and Z."
+}

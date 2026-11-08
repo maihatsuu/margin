@@ -13,32 +13,22 @@ import java.nio.file.Path;
 
 public class MarginConfig {
 	private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
-	private static final int MAX_MAP_SCALE = 4;
 
 	private static MarginConfig instance = new MarginConfig();
 
 	public boolean showCoordinates = true;
 	public boolean showY = false;
-	public int defaultMapScale = 0;
 
 	public static MarginConfig get() {
 		return instance;
 	}
 
-	public byte mapScale() {
-		return (byte) Math.clamp(defaultMapScale, 0, MAX_MAP_SCALE);
-	}
-
 	/** Reads the config file, creating it with defaults if missing. A broken file is left for the user to fix. */
 	static void load() {
-		Path path = FabricLoader.getInstance().getConfigDir().resolve(Margin.MOD_ID + ".json");
+		Path path = path();
 
 		if (Files.notExists(path)) {
-			try (Writer writer = Files.newBufferedWriter(path)) {
-				GSON.toJson(instance, writer);
-			} catch (IOException e) {
-				Margin.LOGGER.warn("Could not write {}", path, e);
-			}
+			save();
 			return;
 		}
 
@@ -50,5 +40,18 @@ public class MarginConfig {
 		} catch (IOException | JsonParseException e) {
 			Margin.LOGGER.warn("Could not read {}, using defaults", path, e);
 		}
+	}
+
+	public static void save() {
+		Path path = path();
+		try (Writer writer = Files.newBufferedWriter(path)) {
+			GSON.toJson(instance, writer);
+		} catch (IOException e) {
+			Margin.LOGGER.warn("Could not write {}", path, e);
+		}
+	}
+
+	private static Path path() {
+		return FabricLoader.getInstance().getConfigDir().resolve(Margin.MOD_ID + ".json");
 	}
 }

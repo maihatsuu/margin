@@ -20,6 +20,9 @@
 		],
 		"client": [
 			"maihatsuu.margin.client.MarginClient"
+		],
+		"modmenu": [
+			"maihatsuu.margin.client.MarginModMenu"
 		]
 	},
 	"mixins": [
@@ -34,5 +37,9 @@
 		"minecraft": "~1.21.1",
 		"java": ">=21",
 		"fabric-api": "*"
+	},
+	"suggests": {
+		"cloth-config": "*",
+		"modmenu": "*"
 	}
 }

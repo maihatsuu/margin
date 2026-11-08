@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project state
 
-Margin is a Fabric mod (mod id `margin`) for Minecraft 1.21.1. Options are read once at startup from `config/margin.json` (`MarginConfig`, loaded from the main entrypoint).
+Margin is a Fabric mod (mod id `margin`) for Minecraft 1.21.1. Options are read at startup from `config/margin.json` (`MarginConfig`, loaded from the main entrypoint) and can be changed in-game through an optional Mod Menu / Cloth Config screen. Those two are compile-only dependencies: Cloth classes must stay confined to `MarginConfigScreen` so the mod still loads without them.
 
 The design for the mod is in `Margin.md`: coordinates drawn on held maps (client) and a configurable default scale for new maps (server). Read it before implementing features, and treat its "Open questions" section as undecided.
 

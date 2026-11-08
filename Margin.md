@@ -22,24 +22,25 @@ and is used for both the two-handed and one-handed (offhand) map views, so one i
 both. Draw the text with `Font.drawInBatch` using the same pose stack, buffer and packed light, near
 the bottom edge, scaled down slightly so it fits inside the map border.
 
-## Default map size
-- New maps (from using an empty map) start at a configurable scale instead of vanilla's closest
-  zoom. Scale 0 is vanilla (1 block per pixel, 128×128 blocks); each step doubles the area, up to
-  4 (2048×2048 blocks).
-- Cartography tables can still zoom maps out further, up to the usual max of 4.
-- Server-side: map creation happens on the server, via a mixin on the scale argument passed when
-  `EmptyMapItem` creates the map (`MapItem.create(...)`).
+## Zooming empty maps
+- Maps stay vanilla by default: a plain empty map makes a level 0 map (1 block per pixel, 128×128
+  blocks).
+- An empty map can be zoomed at a cartography table, the same way as a filled map: empty map in the
+  top slot, paper in the bottom, one level per paper, up to 4 (2048×2048 blocks). The empty map
+  shows its level in its tooltip, and the filled map made from it starts at that level.
+- This replaces zooming after the fact, which throws away what the map had drawn.
+- The level is stored in vanilla's `custom_data` component, so no custom item or networking is
+  needed. The server does the work; the client mod supplies the tooltip.
 
 ## Sides
-Install on both client and server (the pack always does). The coordinates are client-side and the
-map size is server-side; no networking between them.
+Install on both client and server (the pack always does). The coordinates are client-side and empty
+map zooming is mostly server-side; no networking between them.
 
 ## Config (`config/margin.json`)
 | Option | Default | Side | Description |
 |---|---|---|---|
 | `showCoordinates` | true | client | Write coordinates on held maps. |
 | `showY` | false | client | Include the Y coordinate. |
-| `defaultMapScale` | 0 | server | Scale of newly made maps, 0 (vanilla) to 4. |
 
 Optional Mod Menu / Cloth Config screen, like Snout.
 
@@ -59,5 +60,7 @@ Optional Mod Menu / Cloth Config screen, like Snout.
 - `showY` on/off.
 - Map from a different area: still shows your coordinates.
 - Item frame maps: no text.
-- `defaultMapScale` 0 vs 2: a new map covers 128 vs 512 blocks; cartography table zoom still works.
+- Empty map + paper at a cartography table: level rises to 4 and stops; the tooltip shows it; the
+  filled map covers the right area. Plain empty maps stay vanilla; filled map zoom still works.
+- Using the last empty map in a stack keeps its level.
 - Vanilla client on a server with the mod, and the mod on a client joining a vanilla server.
