@@ -22,6 +22,11 @@ and is used for both the two-handed and one-handed (offhand) map views, so one i
 both. Draw the text with `Font.drawInBatch` using the same pose stack, buffer and packed light, near
 the bottom edge, scaled down slightly so it fits inside the map border.
 
+## Biome name on held maps
+- The biome you're standing in is written along the top edge of every held filled map, in the same
+  ink-on-paper style as the coordinates. It's read at your block position, so cave biomes show
+  underground, and it updates live.
+
 ## Zooming empty maps
 - Maps stay vanilla by default: a plain empty map makes a level 0 map (1 block per pixel, 128×128
   blocks).
@@ -41,6 +46,7 @@ map zooming is mostly server-side; no networking between them.
 |---|---|---|---|
 | `showCoordinates` | true | client | Write coordinates on held maps. |
 | `showY` | false | client | Include the Y coordinate. |
+| `showBiome` | true | client | Write the current biome on held maps. |
 
 Optional Mod Menu / Cloth Config screen, like Snout.
 

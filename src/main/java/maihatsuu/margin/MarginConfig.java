@@ -18,6 +18,7 @@ public class MarginConfig {
 
 	public boolean showCoordinates = true;
 	public boolean showY = false;
+	public boolean showBiome = true;
 
 	public static MarginConfig get() {
 		return instance;

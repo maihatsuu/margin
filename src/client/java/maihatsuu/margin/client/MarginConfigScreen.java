@@ -33,6 +33,11 @@ final class MarginConfigScreen {
 				.setTooltip(Component.translatable("config.margin.showY.tooltip"))
 				.setSaveConsumer(v -> config.showY = v)
 				.build());
+		general.addEntry(entries.startBooleanToggle(Component.translatable("config.margin.showBiome"), config.showBiome)
+				.setDefaultValue(true)
+				.setTooltip(Component.translatable("config.margin.showBiome.tooltip"))
+				.setSaveConsumer(v -> config.showBiome = v)
+				.build());
 
 		return builder.build();
 	}
