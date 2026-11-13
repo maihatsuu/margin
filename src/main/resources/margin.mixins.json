@@ -5,7 +5,8 @@
 	"mixins": [
 		"CartographyTableMapSlotMixin",
 		"CartographyTableMenuMixin",
-		"EmptyMapItemMixin"
+		"EmptyMapItemMixin",
+		"MapItemSavedDataMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

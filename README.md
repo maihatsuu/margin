@@ -13,6 +13,9 @@ There's no HUD and there are no new items.
   the biome you're standing in is written along the top.
 - They always describe where you are, even if the map shows somewhere else.
 - The text is drawn on the map itself, so it moves and sways with the map, and updates as you walk.
+- When you're off the edge of a map, the marker at its edge becomes a small arrow that points the way
+  you're facing, instead of vanilla's plain dot. Far away, where vanilla would remove the marker,
+  it stays as an even smaller arrow.
 - Maps in item frames stay as they are.
 
 ### Zooming empty maps
